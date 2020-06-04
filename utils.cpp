@@ -30,7 +30,8 @@ double differential_equation_vy(double d_dot, double z_dot, double g, double k, 
     return vy_dot;
 }
 
-double Runge_Kutta_method(double y_prev, double x, double x_prev){
-    double y = y_prev +  (x-x_prev)*F(x_prev, y_prev);
-
+double Runge_Kutta_method(double y_prev, double x_prev, double F){
+    double step = 0.01;
+    double x = x_prev + step;
+    double y = y_prev + (x-x_prev)*F;
 }

@@ -15,4 +15,7 @@ int main(){
     
     double vy_dot = differential_equation_vy(z_dot,d_dot, g, k, z);
     double vx_dot = differential_equation_vx(z_dot,d_dot, g, k, z);
+
+    double R1 = Runge_Kutta_method(z_dot, 0 ,vy_dot);
+    cout <<  R1;
 }
