@@ -18,7 +18,7 @@ double differential_equation_vx(double d_dot, double z_dot, double g, double k, 
     double vx, vy;
     vx = d_dot; vy = z_dot;
 
-    double vx_dot = -(vy*vy + vx*vx)*(10e-5)*(exp(-k*z))* vx / (sqrt(vy*vy+vx*vx));
+    double vx_dot = -sqrt(vy*vy + vx*vx)*(10e-5)*(exp(-k*z))* vx ;
     return vx_dot;
 }
 
@@ -26,12 +26,11 @@ double differential_equation_vy(double d_dot, double z_dot, double g, double k, 
     double vx, vy;
     vx = d_dot; vy = z_dot;
 
-    double vy_dot = -g -(vy*vy + vx*vx)*(10e-5)*(exp(-k*z))* vy / (sqrt(vy*vy+vx*vx));
+    double vy_dot = -g -sqrt(vy*vy + vx*vx)*(10e-5)*(exp(-k*z))* vy;
     return vy_dot;
 }
 
-double Runge_Kutta_method(double y_prev, double x_prev, double F){
-    double step = 0.01;
-    double x = x_prev + step;
-    double y = y_prev + (x-x_prev)*F;
+double Runge_Kutta_method(double y_prev, double y_dot, double h, double x_prev){ // y_dot вычисляем зарание (z_dot/d_dot) // h вычисляем заранее как x_i - x_(i-1)
+    double y = y_prev +  h*y_dot;
+
 }
